@@ -13,30 +13,32 @@ public class MainActivity extends AppCompatActivity {
 
     // Definieer een array van 10000 posities voor het opslaan
     // van integers
-    int arrayGetallen[] = new int[10000];
+    int[] arrayGetallen;
 
     // Definieer een arraylist
-    ArrayList<Integer> alGetallen = new ArrayList<Integer>();
+    ArrayList<Integer> alGetallen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        alGetallen = new ArrayList<Integer>();
+        arrayGetallen = new int[10000];
+        ListView lvGetallen = (ListView) findViewById(R.id.lvGetallen);
 
 
         // Vul de array met random getallen tussen 1000 en 10000
         // Voeg 10000 random getallen toe aan de arraylist
-        for(int i = 0 ; i < 10000 ; i++){
+        for (int i = 0; i < 10000; i++) {
             Random random = new Random();
             int randomNumber = random.nextInt(9000) + 1000;
             arrayGetallen[i] = randomNumber;
             alGetallen.add(randomNumber);
         }
-        Log.d("rsk01" , "" + arrayGetallen[5000]);
+        Log.d("rsk01", "" + arrayGetallen[5000]);
 
-        ListView lvGetallen =  findViewById(R.id.lvGetallen);
 
-        ArrayAdapter<Integer> adap = new GetalAdapter(getApplicationContext() ,
+        ArrayAdapter<Integer> adap = new GetalAdapter(getApplicationContext(),
                 alGetallen);
 
         lvGetallen.setAdapter(adap);
